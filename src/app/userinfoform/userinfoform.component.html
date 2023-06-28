@@ -1,0 +1,99 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>User Information Form</h1>
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" id="username"
+               required
+               [(ngModel)]="model.fname" name="username"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Username is required
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="fname">First Name:</label>
+        <input type="text" class="form-control" id="fname"
+               required
+               [(ngModel)]="model.fname" name="fname"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          First Name is required
+        </div>
+      </div>
+
+      <br>
+      <div class="form-group">
+        <label for="lname">Last Name:</label>
+        <input type="text" class="form-control" id="lname"
+               required
+               [(ngModel)]="model.lname" name="lname"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Last Name is required
+        </div>
+      </div>
+
+      <br>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email"
+               required
+               [(ngModel)]="model.email" name="email"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Email is required
+        </div>
+      </div>
+
+      <br>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="number" class="form-control" id="phone"
+               required
+               [(ngModel)]="model.phone" name="phone"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Email is required
+        </div>
+      </div>
+
+      <br>
+      <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Submit</button>
+
+    </form>
+  </div>
+
+  <div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">Username:</div>
+      <div class="col-xs-9">{{ model.username }}</div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-3">Name:</div>
+      <div class="col-xs-9">{{ model.fname }}</div>
+      <div class="col-xs-9">{{ model.lname }}</div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-3">Email:</div>
+      <div class="col-xs-9">{{ model.email }}</div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-3">Phone:</div>
+      <div class="col-xs-9">{{ model.phone }}</div>
+    </div>
+    <br>
+    <button type="button" class="btn btn-primary" (click)="submitted=false">Edit</button>
+  </div>
+</div>
